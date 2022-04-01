@@ -11,17 +11,17 @@ const IndexPage = ({ data }) => (
     <Seo title="Home" />
         <List width={[1, 1 / 2, 2 / 3]} p={2}>
         {
-          data.allContentfulBlogPost.edges.map(edge => (
+          data.allContentfulRave.edges.map(edge => (
               <ListItem p={3}>
-                  <Link to={edge.node.slug} key={edge.node.id}>{edge.node.title}</Link>
+                  <Link to={edge.node.slug} key={edge.node.id}>{edge.node.name}</Link>
                   <div>
                     <GatsbyImage
-                      image={edge.node.heroImage.gatsbyImageData}
+                      image={edge.node.image.gatsbyImageData}
                       alt="test"
                     />
                   </div>
                   <div>
-                    {edge.node.body.childMarkdownRemark.excerpt}
+                    {edge.node.description.childMarkdownRemark.rawMarkdownBody}
                   </div>
               </ListItem>
           ))
@@ -34,26 +34,30 @@ export default IndexPage
 
 export const query = graphql`
 {
-    allContentfulBlogPost {
-      edges {
-        node {
-          id
-          title
-          slug
-          body {
-            childMarkdownRemark {
-              excerpt
-            }
-          }
-          heroImage {
-            gatsbyImageData(
-              layout: CONSTRAINED
-              placeholder: BLURRED
-              width: 300
-            )
+  allContentfulRave(sort: {order: ASC, fields: date}) {
+    edges {
+      node {
+        name
+        location
+        date
+        lineup {
+          childrenMarkdownRemark {
+            html
           }
         }
+        description {
+          description
+          childMarkdownRemark {
+            rawMarkdownBody
+          }
+        }
+        image {
+          gatsbyImageData(width: 300)
+        }
+        slug
+        link
       }
     }
   }
+}
 `
