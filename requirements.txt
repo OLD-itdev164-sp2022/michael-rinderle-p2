@@ -1,0 +1,18 @@
+﻿# Project 2
+
+# Project Description
+
+Incomplete
+
+# Feature List
+
+Styled Components
+Version Controlled
+Content System Backend
+Continuous Integration
+
+# Requirements
+React
+Gatsby
+Contentful
+Netlify
