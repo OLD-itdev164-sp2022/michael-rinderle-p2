@@ -1,15 +1,16 @@
+import { H1 } from '../Heading';
+import { IconButton } from '../Button';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
-import styled from 'styled-components';
 import { Search } from 'styled-icons/feather';
-import { H1 } from '../Heading';
-import { IconButton } from '../Button';
 import { Section } from '../Section';
+import styled from 'styled-components';
 
 const Outer = styled.header`
     background: ${({ theme }) => theme.variants.header.primary.backgroundColor};
-    margin-bottom: 1.45rem;
+    box-shadow:  ${({ theme }) => theme.variants.header.primary.boxShadow};
+    margin-bottom: 1rem;
 `
 
 const Inner = styled.div`
@@ -21,9 +22,18 @@ const Inner = styled.div`
 const StyledLink = styled(Link)`
     color: white;
     text-decoration: none;
+    text-shadow: 1px 1px black;
+    font-size: .75em;
     &:hover {
-        color: purple;
+        color: #eba834;
     }
+`
+
+const SubTitle = styled.div`
+  font-size: .5em;
+  padding-top: .5em;
+  color: #eba834;
+
 `
 
 const Header = ({ siteTitle }) => (
@@ -35,11 +45,14 @@ const Header = ({ siteTitle }) => (
                         <StyledLink to="/">
                             { siteTitle }
                         </StyledLink>
+                        <SubTitle>
+                            Get the latest on upcoming electronica events
+                        </SubTitle>
                     </H1>
                 </Section>       
-                <Section width={1/12}>
+                {/* <Section width={1/12}>
                     <IconButton icon={<Search />} variant='contrast' />
-                </Section>
+                </Section> */}
             </Section>    
         </Inner>
     </Outer>

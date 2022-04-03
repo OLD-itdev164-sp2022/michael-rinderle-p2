@@ -1,6 +1,7 @@
-import React from 'react';
+import { Box, Flex } from 'rebass';
+
 import PropTypes from 'prop-types';
-import { Flex, Box } from 'rebass';
+import React from 'react';
 
 export const BaseContainer = ({ children, flex = false, ...rest }) => {
     let Component = flex ? Flex : Box;

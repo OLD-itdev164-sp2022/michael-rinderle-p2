@@ -1,32 +1,28 @@
 import * as React from 'react';
-import { graphql, Link } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
 
-import Layout from '../components/layout';
-import Seo from '../components/seo';
 import { List, ListItem } from '../components/List';
 
+import { FestivalItem } from '../components/Festival';
+import Layout from '../components/layout';
+import Seo from '../components/seo';
+import { graphql } from 'gatsby';
+
 const IndexPage = ({ data }) => (
-  <Layout>
+  <Layout>    
     <Seo title="Home" />
-        <List width={[1, 1 / 2, 2 / 3]} p={2}>
-        {
-          data.allContentfulRave.edges.map(edge => (
-              <ListItem p={3}>
-                  <Link to={edge.node.slug} key={edge.node.id}>{edge.node.name}</Link>
-                  <div>
-                    <GatsbyImage
-                      image={edge.node.image.gatsbyImageData}
-                      alt="test"
-                    />
-                  </div>
-                  <div>
-                    {edge.node.description.childMarkdownRemark.rawMarkdownBody}
-                  </div>
-              </ListItem>
-          ))
-        }
-        </List>
+    <div>
+      <p>Welcome to the Institute of Electronica. Your source for upcoming electronica events.</p>
+      <h2>Upcoming Events</h2>
+    </div>
+    <List width={[1]} p={2}>
+    {
+      data.allContentfulRave.edges.map(edge => (
+        <ListItem>
+          <FestivalItem festivalEdge={edge} />
+        </ListItem>    
+      ))
+    }
+    </List>
   </Layout>
 )
 
@@ -39,7 +35,7 @@ export const query = graphql`
       node {
         name
         location
-        date
+        date(formatString: "MMMM Do, YYYY")
         lineup {
           childrenMarkdownRemark {
             html
@@ -51,8 +47,13 @@ export const query = graphql`
             rawMarkdownBody
           }
         }
-        image {
-          gatsbyImageData(width: 300)
+        logo {
+          gatsbyImageData
+          (
+            layout: CONSTRAINED
+            width: 250
+            height: 250
+          )
         }
         slug
         link

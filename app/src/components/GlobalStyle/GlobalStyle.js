@@ -21,6 +21,7 @@ const GlobalStyle = createGlobalStyle`
       -ms-font-feature-settings: "kern", "liga", "clig", "calt";
       -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
       font-feature-settings: "kern", "liga", "clig", "calt";
+      background-color: #e0e0e0;
     }
     article,
     aside,
@@ -359,6 +360,7 @@ const GlobalStyle = createGlobalStyle`
       margin-bottom: 1.45rem;
       list-style-position: outside;
       list-style-image: none;
+      list-style-type: none;
     }
     ol {
       margin-left: 1.45rem;
