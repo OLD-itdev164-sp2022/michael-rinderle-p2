@@ -8,7 +8,7 @@
 # netlify link : https://62465897e9940569cf5e1212--keen-cat-9f7394.netlify.app/
 
 # Screenshot
-[Screenshot](screenshot.png)
+![Screenshot](screenshot.png)
 
 # Demo
-[Screenshot](demo.gif)
+![Screenshot](demo.gif)
