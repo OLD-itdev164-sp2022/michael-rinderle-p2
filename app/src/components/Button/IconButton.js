@@ -7,9 +7,13 @@ const StyledButton = styled(BaseButton)`
     ${ ( { theme, variant }) => theme.variants.iconButton[variant || 'primary']}
 `
 
+const showAlert = () => {
+    alert("this is an alert");
+}
+
 export const IconButton = styled(({ icon, ...rest}) => {
     let clone = React.cloneElement(icon, rest)
-    return <StyledButton as={clone.type} {...rest} className={rest.className} />
+    return <StyledButton as={clone.type} {...rest} className={rest.className} onClick={showAlert}/>
 })`
     // We could add styles here, but it is not necessary.
     // The main reason this is a styled component is to wrap the styled icon passed in as a prop.

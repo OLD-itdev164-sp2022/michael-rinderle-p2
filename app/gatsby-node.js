@@ -5,12 +5,12 @@ exports.createPages = ({ graphql, actions }) => {
     return new Promise((resolve, reject) => {
         graphql(`
           {
-            allContentfulBlogPost {
+            allContentfulRave {
               edges {
                 node {
-                  id
                   slug
-                  title
+                  name
+                  id
                 }
               }
             }
@@ -19,10 +19,10 @@ exports.createPages = ({ graphql, actions }) => {
             if (result.errors) {
                 reject(result.errors);
             }
-            result.data.allContentfulBlogPost.edges.forEach((edge) => {
+            result.data.allContentfulRave.edges.forEach((edge) => {
                 createPage({
                     path: edge.node.slug,
-                    component: path.resolve(`./src/templates/blog-post.js`),
+                    component: path.resolve(`./src/templates/festival.js`),
                     context: {
                         slug: edge.node.slug
                     }

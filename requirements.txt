@@ -2,7 +2,11 @@
 
 # Project Description
 
-Incomplete
+This project is a website that shows all the latest electronic music
+festivals. You can search and look at all the details of each event.
+Each festival shows the date, location, festival website, and musician 
+lineups. The website utilizes Gatsby/React, uses Contentful to populate 
+each festival and has a continuous integration provided by Netlify. 
 
 # Feature List
 

@@ -30,7 +30,8 @@ const variants = {
     },
     header: {
         primary: {
-            backgroundColor: theme.colors.grays[8]
+            backgroundColor: "#696969",
+            boxShadow: "1px 1px black"
         }
     }
 }
