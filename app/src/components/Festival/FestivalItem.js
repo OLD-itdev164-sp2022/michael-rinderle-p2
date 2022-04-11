@@ -1,5 +1,6 @@
 import { BaseContainer } from '../BaseContainer';
 import { Box } from 'rebass';
+import { CursorClick } from '@styled-icons/fluentui-system-filled/CursorClick';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
@@ -45,14 +46,20 @@ const FestivalLink = styled(Link)`
     color: white;
     text-decoration: none;
     background-color: #696969;
-    margin: .5em;
+    // margin: .5em;
     padding: .5em;
+    padding-right: 1em;
     text-shadow: 1px 1px black;
     font-size: 1em;
     &:hover {
         color: #eba834;
         text-shadow: none;
     }
+`
+
+const Cursor = styled(CursorClick)`
+    height: 1.5em;
+    padding-right: 1em;
 `
 
 export const FestivalItem = ({ festivalEdge }) => (
@@ -67,7 +74,10 @@ export const FestivalItem = ({ festivalEdge }) => (
                     { festivalEdge.node.date ? festivalEdge.node.date : "To be announced" }
                     </h4>
                     <p>{festivalEdge.node.description.childMarkdownRemark.rawMarkdownBody}</p>
-                    <FestivalLink to={festivalEdge.node.slug} key={festivalEdge.node.id}>Learn More</FestivalLink>
+                    <FestivalLink to={festivalEdge.node.slug} key={festivalEdge.node.id}>
+                        <Cursor/>
+                        Learn More
+                    </FestivalLink>
                 </DetailDescription>
                 <DetailImage>
                     <GatsbyImage

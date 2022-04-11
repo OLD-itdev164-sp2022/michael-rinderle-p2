@@ -1,8 +1,10 @@
+import React, { useState } from 'react';
+
 import { Box } from 'rebass';
+import FestivalModal from '../components/Festival/FestivalModal'
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Layout from '../components/layout';
 import { Link } from 'gatsby';
-import React from 'react';
 import Seo from '../components/seo';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
@@ -44,7 +46,7 @@ const DetailContainer = styled(Box)`
 
 const DetailDescription = styled.div`   
     float: left;
-    width: 50%;
+    width: 60%;
     font-size: 1em;
     padding-right: .5em;
     padding-left: .5em;
@@ -52,7 +54,7 @@ const DetailDescription = styled.div`
 
 const DetailImage = styled.div` 
     float: right;
-    width: 50%;
+    width: 40%;
     text-align: center;
 `
 
@@ -66,10 +68,21 @@ const DetailHeading = styled.div`
 const FestivalLink = styled(Link)`
     color: #eba834;
     text-decoration: none;
+    font-size: .8em;
 `
 
 const Festival = ({ data }) => {
     const { name, location, date, lineup, description, image, link} = data.contentfulRave;
+    const [show, setShow] = useState(false);
+
+    const showModal = () => {
+        setShow(true);
+    }
+
+    const hideModal = () => {
+        setShow(false);
+    }
+    
     return (
       <Layout>  
         <Seo title={name} />
@@ -87,9 +100,16 @@ const Festival = ({ data }) => {
                     <p>{lineup.childMarkdownRemark.rawMarkdownBody}</p>
                 </DetailDescription>
                 <DetailImage>
-                    <GatsbyImage
-                        image={image.gatsbyImageData}
-                        alt={name}/>
+                    <div onClick={showModal}>
+                        <GatsbyImage
+                            image={image.gatsbyImageData}
+                            alt={name}/>
+                    </div>
+                    <FestivalModal show={show} handleClose={hideModal}>
+                        <GatsbyImage
+                            image={image.gatsbyImageData}
+                            alt={name}/>
+                    </FestivalModal>
                 </DetailImage>
             </DetailContainer> 
         </Container>      

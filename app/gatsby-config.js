@@ -4,7 +4,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `♩ ♫ ♬ Institute of Electronica`,
+    title: `Institute of Electronica`,
     description: `just coding. building new stuff...`,
     author: `Michael Rinderle`,
     contact: {

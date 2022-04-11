@@ -1,9 +1,8 @@
 import { H1 } from '../Heading';
-import { IconButton } from '../Button';
 import { Link } from 'gatsby';
+import { LogoButton } from '../Button/LogoButton';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Search } from 'styled-icons/feather';
 import { Section } from '../Section';
 import styled from 'styled-components';
 
@@ -29,11 +28,14 @@ const StyledLink = styled(Link)`
     }
 `
 
+const Logo = styled(LogoButton)`
+    margin-right: 1em !important;
+`
+
 const SubTitle = styled.div`
   font-size: .5em;
-  padding-top: .5em;
+  padding-top: .75em;
   color: #eba834;
-
 `
 
 const Header = ({ siteTitle }) => (
@@ -43,6 +45,7 @@ const Header = ({ siteTitle }) => (
                 <Section width={11/12}>
                     <H1>
                         <StyledLink to="/">
+                            <Logo />  
                             { siteTitle }
                         </StyledLink>
                         <SubTitle>
@@ -50,9 +53,6 @@ const Header = ({ siteTitle }) => (
                         </SubTitle>
                     </H1>
                 </Section>       
-                {/* <Section width={1/12}>
-                    <IconButton icon={<Search />} variant='contrast' />
-                </Section> */}
             </Section>    
         </Inner>
     </Outer>

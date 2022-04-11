@@ -1,4 +1,10 @@
+import { MusicNote } from '@styled-icons/heroicons-outline/MusicNote';
+import React from 'react';
 import { withTheme } from "styled-components"
+
+const icons = {
+    Music : <MusicNote />
+}
 
 const theme = {
     space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
@@ -36,4 +42,4 @@ const variants = {
     }
 }
 
-export const Gray = { ...theme, variants}
+export const Gray = { ...theme, variants, icons}
